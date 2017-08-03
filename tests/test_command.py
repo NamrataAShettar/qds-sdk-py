@@ -1291,8 +1291,9 @@ class TestDbExportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                {
+                # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'export_dir': None,
                  'name': None,
                  'db_update_keys': None,
@@ -1321,8 +1322,9 @@ class TestDbExportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                {
+                # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'export_dir': None,
                  'name': None,
                  'db_update_keys': None,
@@ -1338,29 +1340,29 @@ class TestDbExportCommand(QdsCliTestCase):
                  'db_update_mode': None,
                  'retry': 0})
 
-    def test_use_customer_cluster_command(self):
-        sys.argv = ['qds.py', 'dbexportcmd', 'submit', '--mode', '1', '--dbtap_id', '1',
-         '--db_table', 'mydbtable', '--hive_table', 'myhivetable','--retry', 3,'--use_customer_cluster',True,'--customer_cluster_label','hadoop1']
-        print_command()
-        Connection._api_call = Mock(return_value={'id': 1234})
-        qds.main()
-        Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': 'hadoop1',
-                 'use_customer_cluster': True,
-                 'export_dir': None,
-                 'name': None,
-                 'db_update_keys': None,
-                 'partition_spec': None,
-                 'fields_terminated_by': None,
-                 'hive_table': 'myhivetable',
-                 'db_table': 'mydbtable',
-                 'mode': '1',
-                 'tags': None,
-                 'command_type': 'DbExportCommand',
-                 'dbtap_id': '1',
-                 'can_notify': True,
-                 'db_update_mode': None,
-                 'retry': 0})
+    # def test_use_customer_cluster_command(self):
+    #     sys.argv = ['qds.py', 'dbexportcmd', 'submit', '--mode', '1', '--dbtap_id', '1',
+    #      '--db_table', 'mydbtable', '--hive_table', 'myhivetable','--retry', 3,'--use_customer_cluster',True,'--customer_cluster_label','hadoop1']
+    #     print_command()
+    #     Connection._api_call = Mock(return_value={'id': 1234})
+    #     qds.main()
+    #     Connection._api_call.assert_called_with('POST', 'commands',
+    #             {'customer_cluster_label': 'hadoop1',
+    #              'use_customer_cluster': True,
+    #              'export_dir': None,
+    #              'name': None,
+    #              'db_update_keys': None,
+    #              'partition_spec': None,
+    #              'fields_terminated_by': None,
+    #              'hive_table': 'myhivetable',
+    #              'db_table': 'mydbtable',
+    #              'mode': '1',
+    #              'tags': None,
+    #              'command_type': 'DbExportCommand',
+    #              'dbtap_id': '1',
+    #              'can_notify': True,
+    #              'db_update_mode': None,
+    #              'retry': 0})
 
 
     def test_submit_with_name(self):
@@ -1370,8 +1372,9 @@ class TestDbExportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                {
+                # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'export_dir': None,
                  'name': 'commandname',
                  'db_update_keys': None,
@@ -1395,8 +1398,9 @@ class TestDbExportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                {
+                # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'export_dir': None,
                  'name': None,
                  'db_update_keys': 'key1',
@@ -1420,8 +1424,9 @@ class TestDbExportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                {
+                # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'export_dir': 's3:///export-path/',
                  'name': None,
                  'db_update_keys': None,
@@ -1456,8 +1461,9 @@ class TestDbImportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'use_customer_cluster': False,
-                 'customer_cluster_label': None,
+                                                {
+                # {'use_customer_cluster': False,
+                #  'customer_cluster_label': None,
                  'db_parallelism': None,
                  'name': None,
                  'dbtap_id': '1',
@@ -1481,8 +1487,8 @@ class TestDbImportCommand(QdsCliTestCase):
         Connection._api_call = Mock(return_value={'id': 1234})
         qds.main()
         Connection._api_call.assert_called_with('POST', 'commands',
-                {'customer_cluster_label': None,
-                 'use_customer_cluster': False,
+                                                { # {'customer_cluster_label': None,
+                #  'use_customer_cluster': False,
                  'db_parallelism': None,
                  'name': None,
                  'dbtap_id': '1',
@@ -1499,30 +1505,30 @@ class TestDbImportCommand(QdsCliTestCase):
                  'db_extract_query': None,
                  'retry': 2})
 
-    def test_submit_command(self):
-        sys.argv = ['qds.py', 'dbimportcmd', 'submit', '--mode', '1', '--dbtap_id', '1',
-         '--db_table', 'mydbtable', '--hive_table', 'myhivetable', '--retry', 3, '--use_customer_cluster',True, '--customer_cluster_label', 'hadoop2']
-        print_command()
-        Connection._api_call = Mock(return_value={'id': 1234})
-        qds.main()
-        Connection._api_call.assert_called_with('POST', 'commands',
-                {'use_customer_cluster':True,
-                 'customer_cluster_label':'hadoop2',
-                 'db_parallelism': None,
-                 'name': None,
-                 'dbtap_id': '1',
-                 'db_where': None,
-                 'db_boundary_query': None,
-                 'mode': '1',
-                 'tags': None,
-                 'command_type': 'DbImportCommand',
-                 'db_split_column': None,
-                 'can_notify': False,
-                 'hive_table': 'myhivetable',
-                 'hive_serde': None,
-                 'db_table': 'mydbtable',
-                 'db_extract_query': None,
-                 'retry': 2})
+    # def test_use_customer_cluster_command(self):
+    #     sys.argv = ['qds.py', 'dbimportcmd', 'submit', '--mode', '1', '--dbtap_id', '1',
+    #      '--db_table', 'mydbtable', '--hive_table', 'myhivetable', '--retry', 3, '--use_customer_cluster',True, '--customer_cluster_label', 'hadoop2']
+    #     print_command()
+    #     Connection._api_call = Mock(return_value={'id': 1234})
+    #     qds.main()
+    #     Connection._api_call.assert_called_with('POST', 'commands',
+    #             {'use_customer_cluster':True,
+    #              'customer_cluster_label':'hadoop2',
+    #              'db_parallelism': None,
+    #              'name': None,
+    #              'dbtap_id': '1',
+    #              'db_where': None,
+    #              'db_boundary_query': None,
+    #              'mode': '1',
+    #              'tags': None,
+    #              'command_type': 'DbImportCommand',
+    #              'db_split_column': None,
+    #              'can_notify': False,
+    #              'hive_table': 'myhivetable',
+    #              'hive_serde': None,
+    #              'db_table': 'mydbtable',
+    #              'db_extract_query': None,
+    #              'retry': 2})
 
 
     def test_retry_out_of_range(self):
